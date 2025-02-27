@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            CreditCardFactory creditCardFactory = new CreditCardFactory();
+            ICreditCardFactory creditCardFactory = new CreditCardFactory();
             ICreditCard creditCard = creditCardFactory.GetCreditCard<AxisCreditCard>();
             System.Console.WriteLine(creditCard.DisplayCardDetails());
 
