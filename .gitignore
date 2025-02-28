@@ -1,2 +1,4 @@
 factory_pattern/bin
 factory_pattern/obj
+/builder_pattern/obj
+/builder_pattern/bin
