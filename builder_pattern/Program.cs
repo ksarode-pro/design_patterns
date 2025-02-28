@@ -4,29 +4,24 @@
     {
         static void Main(string[] args)
         {
-            // Create a catalog item builder
+            // Create a new builder
             ICatalogItemBuilder catalogItemBuilder = new CatalogItemBuilder();
-
-            // Set the brand
-            catalogItemBuilder.SetBrand(1);
-
-            // Set the products
-            catalogItemBuilder.SetProducts(1);
-
-            // Build the catalog item
-            CatalogItem catalogItem = catalogItemBuilder.Build();
-
-            // Display the catalog item
-            Console.WriteLine("Catalog Item:");
+            // Create a new director
+            CatalogItemDirector catalogItemDirector = new CatalogItemDirector(catalogItemBuilder);
+            // Build the complex object
+            catalogItemDirector.BuildCatalogItem(1);
+            // Get the complex object
+            CatalogItem catalogItem = catalogItemBuilder.GetCatalogItem();
+            // Print the complex object
             Console.WriteLine("Brand: " + catalogItem.Brand.BrandName);
-            Console.WriteLine("Products: ");
+            Console.WriteLine("BrandDesc: " + catalogItem.Brand.BrandDescription);
+            Console.WriteLine("BrandStoreData: " + catalogItem.Brand.BrandStoreData);
             foreach (Product product in catalogItem.Products)
             {
-                Console.WriteLine("Product Id: " + product.ProductId);
-                Console.WriteLine("Product Name: " + product.ProductName);
-                Console.WriteLine("Description: " + product.Description);
-                Console.WriteLine("Price: " + product.Price);
-                Console.WriteLine("Terms and Conditions: " + product.TermsAndConditions);
+                Console.WriteLine("Product: " + product.ProductName);
+                Console.WriteLine("ProductDesc: " + product.Description);
+                Console.WriteLine("ProductPrice: " + product.Price);
+                Console.WriteLine("ProductTerms: " + product.TermsAndConditions);
             }
         }
     }

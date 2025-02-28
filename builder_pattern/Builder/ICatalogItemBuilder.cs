@@ -4,10 +4,10 @@ namespace builder_pattern
     public interface ICatalogItemBuilder
     {
         // This method is used to set the brand
-        public void SetBrand(int brandId);
+        public void BuildBrand(int brandId);
         // This method is used to set the products
-        public void SetProducts(int brandId);
+        public void BuildProducts(int brandId);
         // This method is used to return the complex object
-        public CatalogItem Build();
+        public CatalogItem GetCatalogItem();
     }
 }

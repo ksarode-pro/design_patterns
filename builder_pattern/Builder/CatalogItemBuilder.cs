@@ -6,27 +6,31 @@ namespace builder_pattern
     /// </summary>
     class CatalogItemBuilder : ICatalogItemBuilder
     {
-        CatalogItem catalogItem = new CatalogItem();
-        Brand brand = new Brand();
-        List<Product> products = new List<Product>();
+        private CatalogItem catalogItem = new CatalogItem();
+
         /// <summary>
         /// This method is used to set the brand
         /// </summary>
         /// <param name="brandId">brnad is which can be used to fetch brand data</param>
-        public void SetBrand(int brandId)
+        public void BuildBrand(int brandId)
         {
+            Brand brand = new Brand();
             // Fetch brand from the database or from a service
             brand.BrandId = 1;
             brand.BrandName = "Brand 1";
             brand.BrandDescription = "Brand 1 Description";
             brand.BrandStoreData = "Brand 1 Store Data";
+
+            catalogItem.Brand = brand;
+
         }
         /// <summary>
         /// This method is used to set the products
         /// </summary>
         /// <param name="brandId">brandId is which can be used to fetch products</param>       
-        public void SetProducts(int brandId)
+        public void BuildProducts(int brandId)
         {
+            List<Product> products = new List<Product>();
             // Fetch products from the database or from a service
             products.Add(new Product
             {
@@ -55,17 +59,16 @@ namespace builder_pattern
                 Price = 300.00,
                 TermsAndConditions = "Product 3 Terms and Conditions"
             });
+
+            catalogItem.Products = products;
         }
         /// <summary>
         /// This method is used to return the complex object
         /// </summary>
-        /// <returns>complex opbject i.e catalog item</returns>
-        public CatalogItem Build()
+        /// <returns>return the complex object</returns>
+        public CatalogItem GetCatalogItem()
         {
-            catalogItem.Brand = brand;
-            catalogItem.Products = products;
             return catalogItem;
         }
     }
-
 }
