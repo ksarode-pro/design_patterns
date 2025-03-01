@@ -14,10 +14,10 @@ namespace AdapterPattern
             string jsonString = GetEmployeeList();
 
             // Wrap the JSON array inside an object with a property (e.g., "Employees")
-            string wrappedJson = "{ \"Employees\": " + jsonString + " }";
+            string wrappedJson = "{ \"Employee\": " + jsonString + " }";
 
             // Convert JSON to XML
-            XmlDocument? xml = JsonConvert.DeserializeXmlNode(wrappedJson, "root");
+            XmlDocument? xml = JsonConvert.DeserializeXmlNode(wrappedJson, "Employees");
 
             return xml == null ? "" : xml.OuterXml;
         }
