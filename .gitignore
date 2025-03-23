@@ -10,3 +10,7 @@
 /structural_adapter/obj
 /behavioral_chain_of_responsibility/bin
 /behavioral_chain_of_responsibility/obj
+/generic_repo/bin
+/generic_repo/obj
+generic_repo/Data/bin
+generic_repo/Data/obj
