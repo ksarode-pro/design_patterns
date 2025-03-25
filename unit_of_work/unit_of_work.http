@@ -1,0 +1,41 @@
+@unit_of_work_HostAddress = http://localhost:5256
+
+GET {{unit_of_work_HostAddress}}/employee/getall
+Accept: application/json
+pageIndex: 1
+pageSize: 1
+
+###
+
+GET {{unit_of_work_HostAddress}}/employee/1
+Accept: application/json
+
+###
+
+POST  {{unit_of_work_HostAddress}}/employee
+Content-Type: application/json
+
+{
+    "EmployeeName": "Pradnya Sarode",
+    "DepartmentId": 2
+}
+
+###
+
+PUT  {{unit_of_work_HostAddress}}/employee
+Content-Type: application/json
+
+{
+    "Id": 2,
+    "EmployeeName": "Pradnya Sarode",
+    "DepartmentId": 2
+}
+
+###
+
+DELETE  {{unit_of_work_HostAddress}}/employee
+Content-Type: application/json
+
+{
+    "Id": 2
+}
