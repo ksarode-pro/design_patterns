@@ -14,3 +14,5 @@
 /generic_repo/obj
 generic_repo/Data/bin
 generic_repo/Data/obj
+/unit_of_work/bin
+/unit_of_work/obj
