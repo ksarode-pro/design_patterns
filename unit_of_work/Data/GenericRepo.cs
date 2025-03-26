@@ -22,20 +22,23 @@ public class GenericRepo<TEntity> : IGenericRepo<TEntity> where TEntity : class
     {
         return await _dbcontext.Set<TEntity>().FindAsync(id);
     }
-    public async ValueTask<TEntity> InsertAsync(TEntity entity)
+    public async Task InsertAsync(TEntity entity)
     {
-        var entry = _dbcontext.Set<TEntity>().AddAsync(entity);
-        await _dbcontext.SaveChangesAsync();
-        return entry.Result.Entity;
+        _dbcontext.Set<TEntity>().AddAsync(entity);
+        //var entry = _dbcontext.Set<TEntity>().AddAsync(entity);
+        //await _dbcontext.SaveChangesAsync();
+        //return entry.Result.Entity;
     }
-    public async Task<int> UpdateAsync(TEntity entity)
+    public async Task UpdateAsync(TEntity entity)
     {
         _dbcontext.Set<TEntity>().Update(entity);
-        return await _dbcontext.SaveChangesAsync();
+        //_dbcontext.Set<TEntity>().Update(entity);
+        //return await _dbcontext.SaveChangesAsync();
     }
-    public async Task<int> DeleteAsync(TEntity entity)
+    public async Task DeleteAsync(TEntity entity)
     {
         _dbcontext.Set<TEntity>().Remove(entity);
-        return await _dbcontext.SaveChangesAsync();
+        //_dbcontext.Set<TEntity>().Remove(entity);
+        ///return await _dbcontext.SaveChangesAsync();
     }
 }

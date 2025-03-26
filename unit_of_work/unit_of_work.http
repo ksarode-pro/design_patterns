@@ -16,8 +16,8 @@ POST  {{unit_of_work_HostAddress}}/employee
 Content-Type: application/json
 
 {
-    "EmployeeName": "Pradnya Sarode",
-    "DepartmentId": 2
+    "EmployeeName": "Suresh Sarode",
+    "DepartmentId": 1
 }
 
 ###
@@ -26,8 +26,8 @@ PUT  {{unit_of_work_HostAddress}}/employee
 Content-Type: application/json
 
 {
-    "Id": 2,
-    "EmployeeName": "Pradnya Sarode",
+    "Id": 5,
+    "EmployeeName": "Suresh P Sarode",
     "DepartmentId": 2
 }
 
@@ -37,5 +37,5 @@ DELETE  {{unit_of_work_HostAddress}}/employee
 Content-Type: application/json
 
 {
-    "Id": 2
+    "Id": 5
 }

@@ -18,16 +18,19 @@ public class EmployeeRepo : IGenericRepo<Employee>
     {
         return await _genericRepo.GetAsync(id);
     }
-    public async ValueTask<Employee> InsertAsync(Employee entity)
+    public async Task InsertAsync(Employee entity)
     {
-        return await _genericRepo.InsertAsync(entity);
+        await _genericRepo.InsertAsync(entity);
+        // return await _genericRepo.InsertAsync(entity);
     }
-    public async Task<int> UpdateAsync(Employee entity)
+    public async Task UpdateAsync(Employee entity)
     {
-        return await _genericRepo.UpdateAsync(entity);
+        await _genericRepo.UpdateAsync(entity);
+        //return await _genericRepo.UpdateAsync(entity);
     }
-    public async Task<int> DeleteAsync(Employee entity)
+    public async Task DeleteAsync(Employee entity)
     {
-        return await _genericRepo.DeleteAsync(entity);
+        await _genericRepo.DeleteAsync(entity);
+        //return await _genericRepo.DeleteAsync(entity);
     }
 }

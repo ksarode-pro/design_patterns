@@ -16,7 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(
 );
 builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 builder.Services.AddScoped<EmployeeRepo>();
-//builder.Services.AddScoped<DepartmentRepo>();
+builder.Services.AddScoped<DepartmentRepo>();
+builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
 var app = builder.Build();
 

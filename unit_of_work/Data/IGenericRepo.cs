@@ -6,9 +6,9 @@ public interface IGenericRepo<TEntity> where TEntity : class
     
     public Task<TEntity> GetAsync(int id);
     
-    public ValueTask<TEntity> InsertAsync(TEntity entity);
+    public Task InsertAsync(TEntity entity);
     
-    public Task<int> UpdateAsync(TEntity entity);
+    public Task UpdateAsync(TEntity entity);
     
-    public Task<int> DeleteAsync(TEntity entity);
+    public Task DeleteAsync(TEntity entity);
 }

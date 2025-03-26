@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using unit_of_work.Data;
 using unit_of_work.Model;
 
@@ -9,9 +11,16 @@ namespace unit_of_work.Controllers;
 public class EmployeeController : ControllerBase
 {
     private  IGenericRepo<Employee> _employeeRepo;
-    public EmployeeController(IGenericRepo<Employee> employeeRepo)
+    private IGenericRepo<Department> _departmentRepo;
+    private IUnitOfWork _uow;
+    public EmployeeController(IGenericRepo<Employee> employeeRepo, IGenericRepo<Department> departmentRepo)
     {
         _employeeRepo = employeeRepo;
+        _departmentRepo = departmentRepo;
+    }
+    public EmployeeController(IUnitOfWork uow)
+    {
+        _uow = uow; 
     }
 
     [HttpGet(Name = "GetAll")]
@@ -37,8 +46,17 @@ public class EmployeeController : ControllerBase
             EmployeeName = employee.EmployeeName,
             DepartmentId = employee.DepartmentId
         };
-        var result = await _employeeRepo.InsertAsync(emp);
-        return Ok(result);
+        await _uow.BeginTransationAsync();
+        await _uow.employeeRepo.InsertAsync(emp);
+        if(await _uow.CommitAsync())
+        {
+            return Ok();
+        }
+        else
+        {
+            return StatusCode(500);
+        }
+
     }
 
     [HttpPut(Name = "PUT")]
@@ -49,8 +67,17 @@ public class EmployeeController : ControllerBase
             EmployeeName = employee.EmployeeName,
             DepartmentId = employee.DepartmentId
         };
-        var result = await _employeeRepo.UpdateAsync(emp);
-        return Ok(result);
+
+        await _uow.BeginTransationAsync();
+        await _uow.employeeRepo.UpdateAsync(emp);
+        if(await _uow.CommitAsync())
+        {
+            return Ok();
+        }
+        else
+        {
+            return StatusCode(500);
+        }
     }
 
     [HttpDelete(Name = "DELETE")]
@@ -59,7 +86,15 @@ public class EmployeeController : ControllerBase
         Employee emp = new Employee{
             Id = employee.Id
         };
-        var result = await _employeeRepo.DeleteAsync(emp);
-        return Ok(result);
+        await _uow.BeginTransationAsync();
+        await _uow.employeeRepo.DeleteAsync(emp);
+        if(await _uow.CommitAsync())
+        {
+            return Ok();
+        }
+        else
+        {
+            return StatusCode(500);
+        }
     }    
 }

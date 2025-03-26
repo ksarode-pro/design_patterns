@@ -18,16 +18,19 @@ public class DepartmentRepo : IGenericRepo<Department>
     {
         return await _genericRepo.GetAsync(id);
     }
-    public async ValueTask<Department> InsertAsync(Department entity)
+    public async Task InsertAsync(Department entity)
     {
-        return await _genericRepo.InsertAsync(entity);
+        await _genericRepo.InsertAsync(entity);
+        // return await _genericRepo.InsertAsync(entity);
     }
-    public async Task<int> UpdateAsync(Department entity)
+    public async Task UpdateAsync(Department entity)
     {
-        return await _genericRepo.UpdateAsync(entity);
+        await _genericRepo.UpdateAsync(entity);
+        // return await _genericRepo.UpdateAsync(entity);
     }
-    public async Task<int> DeleteAsync(Department entity)
+    public async Task DeleteAsync(Department entity)
     {
-        return await _genericRepo.DeleteAsync(entity);
+        await _genericRepo.DeleteAsync(entity);
+        // return await _genericRepo.DeleteAsync(entity);
     }
 }
