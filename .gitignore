@@ -16,3 +16,5 @@ generic_repo/Data/bin
 generic_repo/Data/obj
 /unit_of_work/bin
 /unit_of_work/obj
+decorator_pattern/bin
+decorator_pattern/obj
