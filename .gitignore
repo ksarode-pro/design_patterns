@@ -18,3 +18,5 @@ generic_repo/Data/obj
 /unit_of_work/obj
 decorator_pattern/bin
 decorator_pattern/obj
+practice/creational_factory/bin
+practice/creational_factory/obj

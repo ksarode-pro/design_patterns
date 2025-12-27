@@ -13,11 +13,13 @@
     }
 }
 
+
 public interface IPizza
 {
     public string GetPizza();
 }
 
+//Existing class
 public class Margaritta : IPizza
 {
     public string GetPizza()
@@ -26,6 +28,7 @@ public class Margaritta : IPizza
     }
 }
 
+//Decorator which allows to reuse functionality from existing class  
 public abstract class PizzaDecorator : IPizza
 {
     private IPizza _pizza;
@@ -41,6 +44,7 @@ public abstract class PizzaDecorator : IPizza
     }
 }
 
+//New class with modified functonality without modifying existing class - Open/Close principle demonstrated
 public class ChickenPizza : PizzaDecorator
 {
     private IPizza _pizza;
